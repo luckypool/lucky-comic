@@ -1,4 +1,4 @@
-comicdb
+lucky-comic
 =======
 
-comicdb
+lucky-comic
