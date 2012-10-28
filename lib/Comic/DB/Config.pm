@@ -8,14 +8,10 @@ my $constant;
 
 BEGIN {
     $constant = {
-        DB_MAIN_MST => 'dbi:mysql:comic_main',
-        DB_MAIN_SLV => 'dbi:mysql:comic_main',
-        DB_MAGAZINE_MST => 'dbi:mysql:comic_magazize',
-        DB_MAGAZINE_SLV => 'dbi:mysql:comic_magazize',
-        DB_PUBLISHER_MST => 'dbi:mysql:comic_publisher',
-        DB_PUBLISHER_SLV => 'dbi:mysql:comic_publisher',
-        DB_BOOK_MST => 'dbi:mysql:comic_book',
-        DB_BOOK_SLV => 'dbi:mysql:comic_book',
+        DB_MAIN => 'dbi:mysql:comic_main',
+        DB_MAGAZINE => 'dbi:mysql:comic_magazize',
+        DB_PUBLISHER => 'dbi:mysql:comic_publisher',
+        DB_BOOK => 'dbi:mysql:comic_book',
     };
 };
 
@@ -24,7 +20,7 @@ use constant {
     map { $_ => $constant->{$_} } keys %$constant,
 };
 
-our @EXPRT = keys %{CONSTANT()};
-our @EXPRT_OK = keys %{CONSTANT()};
+our @EXPORT = keys %{CONSTANT()};
+our @EXPORT_OK = keys %{CONSTANT()};
 
 1;

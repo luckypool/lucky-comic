@@ -9,7 +9,7 @@ BEGIN {
 };
 
 subtest q/constant/ => sub {
-    ok Comic::DB::Config::DB_MAIN_MST;
+    ok Comic::DB::Config::DB_MAIN;
 };
 
 done_testing;
