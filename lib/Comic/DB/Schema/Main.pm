@@ -1,21 +1,43 @@
-package Comic::DB::Main::Schema;
+package Comic::DB::Schema::Main;
 use strict;
 use warnings;
 use DBIx::Skinny::Schema;
+use DateTime;
+use DateTime::Format::Strptime;
+use DateTime::Format::MySQL;
 
 install_table main => schema {
     pk 'id';
     columns qw/id title author magazine publisher number updated_on/;
 };
+
 install_table reading_title => schema {
     pk 'id';
     columns qw/id title main_id updated_on/;
 };
+
 install_table reading_author => schema {
     pk 'id';
     columns qw/id author main_id updated_on/;
 };
+
 install_utf8_columns qw/tite author magazine publisher/;
+
+install_inflate_rule '^.+_on$' => callback {
+    inflate {
+        my $value = shift;
+        my $dt = DateTime::Format::Strptime->new(
+            pattern   => '%Y-%m-%d %H:%M:%S',
+            time_zone => 'Asia/Tokyo',
+        )->parse_date($value);
+        return DateTime->from_object( object => $dt );
+    };
+    deflate {
+        my $value = shift;
+        return DateTime::Format::MySQL->format_date($value);
+    };
+};
+
 1;
 
 __END__

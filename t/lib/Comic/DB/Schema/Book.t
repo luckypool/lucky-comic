@@ -5,7 +5,7 @@ use Test::More;
 use Test::MockObject;
 
 BEGIN {
-    use_ok 'Comic::DB::Publisher::Schema';
+    use_ok 'Comic::DB::Schema::Book';
 };
 
 done_testing;
