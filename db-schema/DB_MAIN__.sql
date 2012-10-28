@@ -10,7 +10,7 @@ CREATE TABLE main (
     number smallint,
     updated_on timestamp NOT NULL,
     PRIMARY KEY (id),
-    INDEX idx_title (title(5)),
+    INDEX idx_title (title(5))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE if EXISTS readings_title;
@@ -32,6 +32,6 @@ CREATE TABLE readings_author (
     updated_on timestamp NOT NULL,
     PRIMARY KEY (id),
     INDEX idx_main_id (main_id),
-    INDEX idx_author (author(5)),
+    INDEX idx_author (author(5))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
