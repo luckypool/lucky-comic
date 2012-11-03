@@ -1,3 +1,4 @@
+CREATE DATABASE comic_main;
 USE comic_main;
 
 DROP TABLE if EXISTS main;

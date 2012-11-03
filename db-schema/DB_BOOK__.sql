@@ -1,3 +1,4 @@
+CREATE DATABASE comic_book;
 USE comic_book;
 
 DROP TABLE if EXISTS book;

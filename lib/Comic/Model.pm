@@ -2,29 +2,29 @@ package Comic::Model;
 use strict;
 use warnings;
 
-use parent qw/Class::Accessor::Fast/;
-
-use Comic::DB;
 use Params::Validate;
 
-__PACKAGE__->mk_accessors(qw/mastere slave/);
+use parent qw/Class::Accessor::Fast/;
+__PACKAGE__->mk_accessors(qw/db/);
 
 sub new {
     my $class = shift;
     my $params = Params::Validate::validate(@_,{
-        db_config => 1,
+        role => {
+            type => Params::Validate::SCALAR,
+            regex => qr/^(m|s)$/,
+        },
     });
+    my $db = $params->{role} eq 'm'
+             ? $class->get_master_dbh()
+             : $class->get_slave_dbh();
     my $self = {
-        master => Comic::DB->new({
-            dsn => $params->{db_config},
-            username => 'comic_admin',
-        }),
-        slave => Comic::DB->new({
-            dsn => $params->{db_config},
-            username => 'readonly',
-        }),
+        db => $db,
     };
     return bless $self, $class;
 }
+
+sub get_master_dbh { die qw/over ride me/; }
+sub get_slave_dbh { die qw/over ride me/; }
 
 1;

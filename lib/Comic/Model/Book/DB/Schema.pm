@@ -1,4 +1,4 @@
-package Comic::DB::Schema::Book;
+package Comic::Model::Book::DB::Schema;
 use strict;
 use warnings;
 use DBIx::Skinny::Schema;

@@ -3,10 +3,9 @@ use warnings;
 
 use Test::More;
 use Test::MockObject;
-use Data::Dumper;
 
 BEGIN {
-    use_ok 'Comic::Model';
+    use_ok 'Comic::Model::Book::DB';
 };
 
 done_testing;
