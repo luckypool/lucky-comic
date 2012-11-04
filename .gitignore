@@ -1,0 +1,4 @@
+# .gitignore
+rawdata
+get_rawdata.pl
+
